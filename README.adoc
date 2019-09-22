@@ -1,0 +1,16 @@
+= cch
+
+cch is a cache for the results of command line programs. If you have a command line
+program that is expensiv=e to run, but that produces the same results every time, then
+you can run it with cch instead. cch will check whether it has run recently with the
+same arguments, and if so it will return the cached results. The results returned are
+the stdout, stderr and return code from the command.
+
+
+== Future plans
+
+- allow checking md5s of input files etc so it knows when the output will change.
+
+
+// vim: textwidth=88
+
