@@ -86,13 +86,17 @@ INSTALL_PROGRAM = $(INSTALL) -m 0755
 INSTALL_DATA 	= $(INSTALL) -m 0644
 INSTALL_DIR 	= $(INSTALL) -d -m 0755
 
+DUB	:= dub
+DUBFLAGS	:=
+
 %:	%.in
 	m4 -D M4_VERSION=$(VERSION) $< > $@
 
 all:	$(DMD_TARGET)
 
 $(DMD_TARGET):	src/*.d
-	$(DMD) $(DMDFLAGS) src/*.d -of$(DMD_TARGET)
+	$(DUB) $(DUBFLAGS) build
+	# $(DMD) $(DMDFLAGS) src/*.d -of$(DMD_TARGET)
 
 $(DMD_TARGET_UNIT):	src/*.d
 	$(DMD) $(DMDFLAGSUNIT) src/*.d -of$(DMD_TARGET_UNIT)
